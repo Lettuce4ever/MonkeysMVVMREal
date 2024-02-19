@@ -10,12 +10,14 @@
 
     <ScrollView>
         <StackLayout>
+            <Button Command="{Binding GoToShowMonkeyViewCommand}" Text="GoToShowMonkey" />
             <Button Command="{Binding LoadMonkeysCommand}" Text="Load Monkeys" />
             <RefreshView Command="{Binding LoadMonkeysCommand}" IsRefreshing="{Binding IsRefreshing}">
                 <CollectionView
                     EmptyView="No Monkeys"
                     ItemsSource="{Binding Monkeys}"
-                    SelectionMode="Single" SelectedItem="{Binding Monkey}">
+                    SelectedItem="{Binding Monkey}"
+                    SelectionMode="Single">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:Monkey">
                             <Frame Padding="5">

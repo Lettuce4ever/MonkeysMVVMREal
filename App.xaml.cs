@@ -1,4 +1,5 @@
-﻿using MonkeysMVVM.Views;
+﻿using MonkeysMVVM.ViewModels;
+using MonkeysMVVM.Views;
 
 namespace MonkeysMVVM;
 
@@ -8,6 +9,7 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new MonkeysPage();
-	}
+		MainPage = new AppShell();
+
+    }
 }
