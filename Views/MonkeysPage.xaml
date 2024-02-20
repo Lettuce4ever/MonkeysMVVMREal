@@ -16,16 +16,16 @@
                 <CollectionView
                     EmptyView="No Monkeys"
                     ItemsSource="{Binding Monkeys}"
-                    SelectedItem="{Binding Monkey}"
+                    SelectedItem="{Binding SelectedMonkey}"
                     SelectionMode="Single">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:Monkey">
-                            <Frame Padding="5">
-                                <Grid ColumnDefinitions="*,*" RowDefinitions="*">
-                                    <Image Aspect="AspectFit" Source="{Binding ImageUrl}" />
-                                    <Label Grid.Column="1" Text="{Binding Name}" />
-                                </Grid>
-                            </Frame>
+
+                            <Grid ColumnDefinitions="*,*" RowDefinitions="*">
+                                <Image Aspect="AspectFit" Source="{Binding ImageUrl}" />
+                                <Label Grid.Column="1" Text="{Binding Name}" />
+                            </Grid>
+
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
