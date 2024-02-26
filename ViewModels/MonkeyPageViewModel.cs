@@ -14,6 +14,7 @@ namespace MonkeysMVVM.ViewModels
 {
     public class MonkeyPageViewModel : ViewModel
     {
+        private MonkeysService monkeysService;
         public Monkey SelectedMonkey { get; set; }
         public ObservableCollection<Monkey> Monkeys { get; set; }
         public Monkey Monkey { get; set; }
@@ -28,6 +29,7 @@ namespace MonkeysMVVM.ViewModels
             Monkeys = new ObservableCollection<Monkey>();
             LoadMonkeysCommand = new Command(async () => await LoadMonkeys());
             GoToShowMonkeyViewCommand = new Command(async () => await GoToShowMonkeyView());
+            this.monkeysService = monkeysService;
         }
 
         private async Task GoToShowMonkeyView()
@@ -41,8 +43,7 @@ namespace MonkeysMVVM.ViewModels
         private async Task LoadMonkeys()
         {
             IsRefreshing = true;
-            MonkeysService monkeys = new MonkeysService();
-            var list = monkeys.GetMonkey();
+            var list = monkeysService.GetMonkey();
             for(int i =0; i < list.Count; i++)
             {
                 Monkeys.Add(list[i]);

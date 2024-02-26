@@ -15,6 +15,8 @@ namespace MonkeysMVVM.ViewModels
     [QueryProperty(nameof(Monkey), "Monkey")]
     public class ShowMonkeyViewModel:ViewModel
     {
+        private MonkeysService monkeysService;
+
         Monkey monkey;
         public Monkey Monkey { get { return monkey; } set { monkey = value; GetMonkey(); } }
         public ICommand ShowMonkeyCommand { get; set; }
@@ -50,11 +52,12 @@ namespace MonkeysMVVM.ViewModels
                 OnPropertyChanged();
             }
         }
-        public ShowMonkeyViewModel()
+        public ShowMonkeyViewModel(MonkeysService monkeysService)
         {
-            ShowMonkeyCommand = new Command(GetMonkey);
-            ShowMonkeyImage = new Command(ShowImage,()=>monkey!=null);//new Command(()=>{if (monkey != null)ImageUrl = monkey.ImageUrl;)}
 
+            ShowMonkeyCommand = new Command(GetMonkey);
+            ShowMonkeyImage = new Command(ShowImage, () => monkey != null);//new Command(()=>{if (monkey != null)ImageUrl = monkey.ImageUrl;)}
+            this.monkeysService = monkeysService;
         }
 
         private void GetMonkey()

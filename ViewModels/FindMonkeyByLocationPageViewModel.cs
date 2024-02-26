@@ -11,6 +11,7 @@ namespace MonkeysMVVM.ViewModels
 {
     public class FindMonkeyByLocationPageViewModel:ViewModel
     {
+        private MonkeysService monkeysService;
         Monkey monkey;
         private int count;
         private string country;
@@ -22,6 +23,7 @@ namespace MonkeysMVVM.ViewModels
 
         public FindMonkeyByLocationPageViewModel()
         {
+            this.monkeysService = monkeysService;
             count = 0;
             SearchCommand = new Command(FindMonkey, () => Country != null);
             monkey = new Monkey() {Name = "לא נמצאו קופים", ImageUrl = "monkey"};
@@ -29,8 +31,7 @@ namespace MonkeysMVVM.ViewModels
 
         private void FindMonkey()
         {
-            MonkeysService service = new MonkeysService();
-            List<Monkey> list = service.FindMonkeysByLocation(country);
+            List<Monkey> list = monkeysService.FindMonkeysByLocation(country);
             Count= list.Count;
             monkey=list.FirstOrDefault();
             Country = null;
