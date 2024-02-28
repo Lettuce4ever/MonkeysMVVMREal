@@ -24,7 +24,7 @@ namespace MonkeysMVVM.ViewModels
         private bool isRefreshing;
         public bool IsRefreshing { get => isRefreshing; set { isRefreshing = value; OnPropertyChanged(); } }
 
-        public MonkeyPageViewModel()
+        public MonkeyPageViewModel(MonkeysService monkeysService)
         {
             Monkeys = new ObservableCollection<Monkey>();
             LoadMonkeysCommand = new Command(async () => await LoadMonkeys());

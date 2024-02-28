@@ -21,7 +21,7 @@ namespace MonkeysMVVM.ViewModels
          public string Country { get => country; set { country = value; OnPropertyChanged(); ((Command)SearchCommand).ChangeCanExecute();  } }    
         public ICommand SearchCommand { get; protected set; }
 
-        public FindMonkeyByLocationPageViewModel()
+        public FindMonkeyByLocationPageViewModel(MonkeysService monkeysService)
         {
             this.monkeysService = monkeysService;
             count = 0;
